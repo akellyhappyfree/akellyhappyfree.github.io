@@ -433,3 +433,82 @@ td {
 .photography-intro a:hover, .email a:hover {
     color: #ffffff;
 }
+
+@media (max-width: 768px) {
+
+    /* Header */
+    header {
+        height: 37vh;
+        background-size: cover;
+        font-size: 28px;
+    }
+
+    /* Navigation */
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+
+    /* Homepage layout */
+    .homelayout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .tipsandtricks,
+    .maincontent {
+        grid-column: auto;
+    }
+
+    /* Video */
+    .home-video {
+        height: auto;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Tables */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Cards */
+    .software-cards {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    /* Feedback box */
+    .feedback-box {
+        position: static;
+        margin: 20px;
+        width: auto;
+    }
+
+    /* Text scaling */
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+}
