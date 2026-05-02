@@ -434,7 +434,7 @@ td {
     color: #ffffff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1900px) {
 
     /* Header */
     header {
@@ -455,14 +455,22 @@ td {
 
     /* Homepage layout */
     .homelayout {
-        grid-template-columns: 1fr;
+        display:flex;
+        flex-direction: column;
         gap: 20px;
         padding: 20px;
     }
 
-    .tipsandtricks,
     .maincontent {
-        grid-column: auto;
+        order: -1;
+    }
+
+    .tipsandtricks {
+        order: 1;
+    }
+    .tipsandtricks, .maincontent {
+        width: 100%;
+        max-width: none;
     }
 
     /* Video */
