@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Addison's Photography</title>
+    <meta name="description" content="Explore the world through my lens. Learn about photography tools and techniques, and see my gallery of photos.">
     <link rel="stylesheet" href="photography.css">
 </head>
 
@@ -20,34 +21,111 @@
         <li><a href="editing.html">Editing</a></li>
     </ul>
 </nav>
-<main>
+<main class = "homelayout">
+
+  <section class = "tipsandtricks">
+        <h2>Tips and Tricks</h2>
+        <p>Here are some useful tips for improving your photography skills!</p>
+        <ul>
+            <li><strong>Rule of Thirds:</strong> Imagine your frame divided into a 3x3 grid. Place key elements along these lines or at their intersections for a more balanced composition.</li>
+            <li><strong>Golden Hour:</strong> Shoot during the first hour after sunrise and the last hour before sunset for soft, warm lighting</li>
+            <li><strong>Leading Lines:</strong> Use natural lines in your scene (like roads, fences, or rivers) to guide the viewer's eye towards the main subject.</li>
+            <li><strong>Experiment with Perspectives:</strong> Change your viewpoint by shooting from high above, down low, or through objects to add interest and uniqueness to your photos.</li>
+            <li><strong>Keep it Steady</strong><br>Use a tripod or steady surface to avoid blur.</li>
+            <li><strong>Focus on the Eyes:</strong><br>When photographing people or animals, ensure the eyes are in sharp focus to create a stronger connection with the viewer.</li>
+        </ul>
+    </section>
+
+    <section class = "maincontent">
     <h2>Welcome to my view of the world I live in!</h2>
     <p>Experience emotion and beauty through my lens. Explore my gallery, and also learn about modern digital cameras, and see how digital photos are edited.</p>
+    
+<video class="home-video" controls autoplay muted loop>
+    <source src="PhotographyVideo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+    </section>
+
 </main>
 
-<footer>
-    <p>&copy; 2026 Addison's Photography</p>
+<footer class="site-footer">
+    <div class="footer-content">
+
+        <p>&copy; 2026 Addison's Photography</p>
+
+        <div class="email">
+            <a href="mailto:akellyfree@asu.edu">Contact Me</a>
+        </div>
+        
+        <div class="photography-intro">
+            <a href="https://www.adobe.com/creativecloud/photography/basics.html?msockid=09931f287ee66769006109ce7fcb6654" target="_blank">Additional info: Adobe's Photography for Beginners</a>
+        </div>
+
+    </div>
 </footer>
 
 <div class="feedback-box">
     <h2>Feedback</h2>
 
-    <form>
-        <label>First Name</label>
-        <input type="text" name="name">
+    <form action="#" method="POST" id="feedback"> <!-- https://formspree.io/f/xlgzdwrq if I want to see user inputs-->
+        <label for="name">First Name</label>
+        <input type="text" id="name" name="name">
 
-        <label>What interests you about photography?</label>
-        <textarea></textarea>
+        <label for="interests">What interests you about photography?</label>
+        <textarea id="interests" name="interests"></textarea>
 
-        <label>Did you learn something from this website? If so, what did you learn?</label>
-        <textarea></textarea>
+        <label for="learning">Did you learn something from this website? If so, what did you learn?</label>
+        <textarea id="learning" name="learning"></textarea>
 
-        <label>What was your favorite picture from my gallery (If any) and why?</label>
-        <textarea></textarea>
+        <label for="favorite">What was your favorite picture from my gallery (If any) and why?</label>
+        <textarea id="favorite" name="favorite"></textarea>
 
         <button type="submit">Submit</button>
 
+    </form>
+    <div id="success-message" class="success-message">
+    Thank you for your feedback! I appreciate it and will use it to improve my website.
+    </div>
+
 </div>
+<script>
+document.getElementById("feedback").addEventListener("submit", async function(event) {
+    event.preventDefault(); // stop page redirect
+
+    const form = this;
+    const formData = new FormData(form);
+    const messageBox = document.getElementById("success-message");
+
+    try {
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const name = document.getElementById("name").value;
+
+            messageBox.textContent = "Thank you " + name + "! Your feedback has been submitted.";
+            messageBox.classList.add("show");
+
+            form.reset();
+            setTimeout(() => {
+                messageBox.classList.remove("show");
+            }, 1001);
+        } else {
+            messageBox.textContent = "Oops! There was a problem submitting your feedback. Please try again.";
+            messageBox.classList.add("show");
+        }
+    } catch (error) {
+        messageBox.textContent = "Network error. Please try again.";
+        messageBox.classList.add("show");
+    }
+});
+</script>
 
 </body>
 </html>
